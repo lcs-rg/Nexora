@@ -1,8 +1,6 @@
 package com.Lucas.Nexora.User.entity;
 
 import com.Lucas.Nexora.Company.entity.Company;
-import com.Lucas.Nexora.Company.enums.CompanyStatus;
-import com.Lucas.Nexora.Company.enums.PlanType;
 import com.Lucas.Nexora.User.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
