@@ -3,9 +3,22 @@ package com.Lucas.Nexora.Company.entity;
 import com.Lucas.Nexora.Company.enums.CompanyStatus;
 import com.Lucas.Nexora.Company.enums.PlanType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(
         name = "companies",
@@ -55,6 +68,4 @@ public class Company {
     public void preUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
-
-    // getters e setters
 }
