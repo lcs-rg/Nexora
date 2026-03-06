@@ -8,5 +8,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CompanyRepository extends JpaRepository<Company, UUID> {
+
+
+    Boolean existsByCnpj(String cnpj);
+
+    Boolean existsBySlug(String slug);
+
+    Optional<Company> findByCnpj(String cnpj);
+
+    Optional<Company> findBySlug(String slug);
+
     Optional<User> findByEmailandCompanyId(String email, UUID companyId);
+
 }
