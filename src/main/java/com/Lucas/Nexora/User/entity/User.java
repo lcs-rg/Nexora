@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -18,7 +19,7 @@ import java.util.UUID;
 @Table(
         name = "users",
         uniqueConstraints = {
-                @UniqueConstraint( columnNames = {"email", "company_id"})
+                @UniqueConstraint(name = "uk_user_email_company", columnNames = {"email", "company_id"})
         }
 )
 public class User {
@@ -31,6 +32,9 @@ public class User {
     private String name;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -41,4 +45,20 @@ public class User {
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
 
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }
